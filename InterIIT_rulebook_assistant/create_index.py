@@ -6,7 +6,7 @@ from langchain_community.vectorstores import FAISS
 
 # --- CONFIGURATION ---
 KNOWLEDGE_BASE_FILE = "InterIIT_rulebook_assistant/rulebook.pdf"
-VECTOR_STORE_PATH = "vector_store"
+VECTOR_STORE_PATH = "InterIIT_rulebook_assistant/vector_store"
 
 def main():
     """

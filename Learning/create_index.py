@@ -6,7 +6,7 @@ from langchain_community.vectorstores import FAISS
 
 # --- CONFIGURATION ---
 KNOWLEDGE_BASE_FILE = "Learning/knowledge_base.txt"
-VECTOR_STORE_PATH = "vector_store"
+VECTOR_STORE_PATH = "Learning/vector_store"
 
 def main():
     """

@@ -6,7 +6,7 @@ from langchain.chains.combine_documents import create_stuff_documents_chain
 from langchain_core.prompts import ChatPromptTemplate
 
 # --- CONFIGURATION ---
-VECTOR_STORE_PATH = "vector_store"
+VECTOR_STORE_PATH = "Learning/vector_store"
 
 def main():
     """
