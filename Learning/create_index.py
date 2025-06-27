@@ -5,7 +5,7 @@ from langchain_google_genai import GoogleGenerativeAIEmbeddings
 from langchain_community.vectorstores import FAISS
 
 # --- CONFIGURATION ---
-KNOWLEDGE_BASE_FILE = "knowledge_base.txt"
+KNOWLEDGE_BASE_FILE = "Learning/knowledge_base.txt"
 VECTOR_STORE_PATH = "vector_store"
 
 def main():
