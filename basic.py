@@ -13,7 +13,7 @@ def main():
     # We specify the model name. `gemini-1.5-flash-latest` points to the most recent version.
     # The library will automatically find and use your GOOGLE_API_KEY.
     try:
-        llm = ChatGoogleGenerativeAI(model="gemini-1.5-flash-latest")
+        llm = ChatGoogleGenerativeAI(model="gemini-2.5-flash")
     except Exception as e:
         print(f"Error initializing the LLM. Is your GOOGLE_API_KEY set correctly? Error: {e}")
         return
