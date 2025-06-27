@@ -26,12 +26,12 @@ def main():
     print("Loading vector store...")
 
     # It's crucial to use the same embedding model you used to create the store
-    embeddings = GoogleGenerativeAIEmbeddings(model="models/embedding-001")
+    embeddings = GoogleGenerativeAIEmbeddings(model="models/text-embedding-004")
     vector_store = FAISS.load_local(VECTOR_STORE_PATH, embeddings, allow_dangerous_deserialization=True)
     print("Vector store loaded successfully.")
 
     # 3. INITIALIZE THE LLM
-    llm = ChatGoogleGenerativeAI(model="gemini-2.0-flash")
+    llm = ChatGoogleGenerativeAI(model="gemini-2.5-flash")
 
     # 4. CREATE THE RETRIEVER
     # This object is responsible for fetching documents from the vector store.

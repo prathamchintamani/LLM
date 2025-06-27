@@ -21,12 +21,12 @@ def main():
         return
 
     print("loading vector store")
-    embeddings = GoogleGenerativeAIEmbeddings(model="models/embedding-001")
+    embeddings = GoogleGenerativeAIEmbeddings(model="models/text-embedding-004")
     vector_store = FAISS.load_local(VECTOR_STORE_PATH, embeddings, allow_dangerous_deserialization=True)
     print("loaded vector store")
 
     retriever = vector_store.as_retriever()
-    llm = ChatGoogleGenerativeAI(model = "gemini-2.0-flash")
+    llm = ChatGoogleGenerativeAI(model = "gemini-2.5-flash")
     prompt_template = """
     You are an assistant for participants of the 13th Inter IIT techmeet,
     Answer the question based ONLY on the following context.
@@ -52,13 +52,13 @@ def main():
         Tool(
             name="General Knowledge Search",
             func=llm.invoke,
-            description="Use this for all other general questions not related to SparkleBot Inc."
+            description="Use this for all other general questions not related to Inter IIT Tech Meet"
         ),
     ]
 
     agent_prompt = hub.pull("hwchase17/react")
     agent = create_react_agent(llm, tools, agent_prompt)
-    agent_executor = AgentExecutor(agent = agent, tools = tools, verbose= True)
+    agent_executor = AgentExecutor.from_agent_and_tools(agent = agent, tools = tools, verbose= True)
 
     print("\nReady... Type 'exit' to quit.")
     while True:

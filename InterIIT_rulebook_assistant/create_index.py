@@ -37,7 +37,7 @@ def main():
     # 3. EMBED AND STORE THE CHUNKS
     print("Creating embeddings and building the vector store...")
     # This uses the "models/embedding-001" model by default
-    embeddings = GoogleGenerativeAIEmbeddings(model="models/embedding-001")
+    embeddings = GoogleGenerativeAIEmbeddings(model="models/text-embedding-004")
 
     # FAISS.from_documents does two things:
     # 1. It calls the embedding model for each chunk.
