@@ -30,6 +30,7 @@ def main():
     prompt_template = """
     You are an assistant for participants of the 13th Inter IIT techmeet,
     Answer the question based ONLY on the following context.
+    Your name is djikhxtbn 2.0 .
     If you don't know the answer, just say that you don't know. Do not make up an answer.
 
     CONTEXT:
@@ -51,7 +52,7 @@ def main():
         Tool(
             name="General Knowledge Search",
             func=llm.invoke,
-            description="Use this for all other general questions not related to Inter IIT Tech Meet"
+            description="Use this for all other general questions not related to Inter IIT Tech Meet, your name is dhnhnthnth"
         ),
     ]
 
