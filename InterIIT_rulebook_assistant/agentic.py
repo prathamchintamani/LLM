@@ -42,7 +42,6 @@ def main():
     document_chain = create_stuff_documents_chain(llm,rag_prompt)
     rag_chain = create_retrieval_chain(retriever,document_chain)
 
-    # --- ADD THIS NEW SECTION AFTER CREATING rag_chain ---
     tools = [
         Tool(
             name="Inter IIT rulebook assistant",
@@ -58,7 +57,7 @@ def main():
 
     agent_prompt = hub.pull("hwchase17/react")
     agent = create_react_agent(llm, tools, agent_prompt)
-    agent_executor = AgentExecutor.from_agent_and_tools(agent = agent, tools = tools, verbose= True)
+    agent_executor = AgentExecutor.from_agent_and_tools(agent = agent, tools = tools, verbose= True, handle_prasing_errors = True)
 
     print("\nReady... Type 'exit' to quit.")
     while True:
@@ -68,10 +67,7 @@ def main():
             break
 
         print("Retrieving and Generating ...")
-        # Invoke the chain with the user's question
         response = agent_executor.invoke({"input": user_question})
-
-        # Print the answer
         print(f"\nRulebook: {response['output']}")
 
 if __name__ == "__main__":

@@ -13,7 +13,6 @@ def main():
     """
     print("--- Assistant for InterIIT 14.0 Rulebook ---")
 
-    # 1. CHECK FOR PREREQUISITES
     if "GOOGLE_API_KEY" not in os.environ:
         print("Error: GOOGLE_API_KEY environment variable not set.")
         return
@@ -22,23 +21,16 @@ def main():
         print("Please run `create_index.py` first to create the index.")
         return
 
-    # 2. LOAD THE SAVED VECTOR STORE
     print("Loading vector store...")
 
-    # It's crucial to use the same embedding model you used to create the store
     embeddings = GoogleGenerativeAIEmbeddings(model="models/text-embedding-004")
     vector_store = FAISS.load_local(VECTOR_STORE_PATH, embeddings, allow_dangerous_deserialization=True)
     print("Vector store loaded successfully.")
 
-    # 3. INITIALIZE THE LLM
     llm = ChatGoogleGenerativeAI(model="gemini-2.5-flash")
 
-    # 4. CREATE THE RETRIEVER
-    # This object is responsible for fetching documents from the vector store.
-    retriever = vector_store.as_retriever(search_kwargs={"k": 3}) # Retrieve top 3 results
+    retriever = vector_store.as_retriever(search_kwargs={"k": 3})
 
-    # 5. CREATE THE PROMPT TEMPLATE
-    # This is the heart of RAG. We instruct the LLM on how to use the context.
     prompt_template = """
     You are an assistant for participants of the 13th Inter IIT techmeet,
     Answer the question based ONLY on the following context.
