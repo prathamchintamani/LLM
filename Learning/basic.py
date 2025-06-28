@@ -1,5 +1,5 @@
 import os
-from langchain_google_genai import ChatGoogleGenerativeAI
+from langchain_community.chat_models import ChatOllama
 
 def main():
     """
@@ -13,7 +13,7 @@ def main():
     # We specify the model name. `gemini-1.5-flash-latest` points to the most recent version.
     # The library will automatically find and use your GOOGLE_API_KEY.
     try:
-        llm = ChatGoogleGenerativeAI(model="gemini-2.5-flash")
+        llm = ChatOllama(model="tinyllama", base_url="http://localhost:11434/")
     except Exception as e:
         print(f"Error initializing the LLM. Is your GOOGLE_API_KEY set correctly? Error: {e}")
         return
